@@ -1,11 +1,7 @@
 {
-  "name": "ember-whale-app",
+  "name": "library-app",
   "dependencies": {
     "ember": "~2.8.0",
-    "ember-cli-shims": "0.1.1",
-    "firebase": "^3.0.0",
-    "d3": "~3.5.3",
-    "lodash": "~3.10.0",
-    "chartjs": "1.0.2"
+    "ember-cli-shims": "0.1.1"
   }
 }
