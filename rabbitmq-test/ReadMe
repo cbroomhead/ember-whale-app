@@ -1,0 +1,3 @@
+you gotta run the rabbit-mq server to work. the command is:
+sudo rabbitmq-server
+//there may be another command that will also launch the server. 

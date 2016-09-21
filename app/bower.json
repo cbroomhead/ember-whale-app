@@ -1,0 +1,20 @@
+{
+  "name": "library-app",
+  "main": "app.js",
+  "homepage": "https://github.com/cbroomhead/ember-whale-app",
+  "authors": [
+    "Celine Broomhead <celine.broomhead@gmail.com>"
+  ],
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ic-ajax": "^2.0.2"
+  }
+}
