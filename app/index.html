@@ -3,9 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>LibraryApp</title>
+    <title>Generation Mix App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+  <link rel="stylesheet" href="https://rawgit.com/Addepar/ember-charts/v0.3.0/dist/ember-charts.css">
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.10/d3.min.js"></script>
+  <script src="https://rawgit.com/Addepar/ember-charts/v0.3.0/dist/ember-charts.js"></script>
 
     {{content-for "head"}}
 
@@ -13,6 +19,7 @@
     <link rel="stylesheet" href="{{rootURL}}assets/library-app.css">
 
     {{content-for "head-footer"}}
+    
   </head>
   <body>
     {{content-for "body"}}
@@ -21,5 +28,7 @@
     <script src="{{rootURL}}assets/library-app.js"></script>
 
     {{content-for "body-footer"}}
+
   </body>
 </html>
+
