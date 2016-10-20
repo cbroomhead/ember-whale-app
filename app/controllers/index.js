@@ -15,9 +15,10 @@ export default Ember.Controller.extend({
   isValid: Ember.computed.match('city', /^.+@.+\..+$/),
   actions: {
     getData() {
+      this.set('errorMessage', '');
+      this.set('piecharts', false);
       const city = this.get('city');
       var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + city;
-      //console.log(apiUrl);
       ajax.raw({
         url: apiUrl,
         type: 'get'
@@ -30,26 +31,22 @@ export default Ember.Controller.extend({
           url: coorUrl,
           type: 'get',
           headers: {
-            'Authorization': 'Token 902faab6d04cd6f4dd7cbca4acce9e28de92ea20'
+            'Authorization': 'Token 91769eaee6281a836ce218415d151634e275b4f1'
           }
         }).then((data) => {
           var authority = data.response[0].name;
-
-          this.set('responseMessage', `Thank you! This is the city you entered: ${city}`);
-          this.set('authorityMessage', `The name of your Balancing Autority is: ${authority}`);
+          this.set('responseMessage', `Thank you! You are located in ${city}`);
+          this.set('authorityMessage', `an the name of the balancing autority is: ${authority}`);
           var ba = data.response[0].abbrev;
+          var that = this;
           ajax.raw({
             url: `https://api.watttime.org/api/v1/datapoints/?ba=${ba}&page=3&page_size=12`,
             type: 'get'
           }).then((more) => {
-            console.log("THIS IS THE RESULT AFTER API CALL", more.response);
-            /*if(more.response.results.length === 0){
-              this.set('authorityMessage', `${authority} does not have any data to provide. try another authority (for exmaple: san francisco`);
-            }
-            */
-            var that = this;
             var resArray = more.response.results;
             that.send('displayCharts', resArray);
+          }).catch(function(error){
+            that.set('errorMessage', `No data. Try another authority (for example: san francisco) or wait a bit, there maybe too many requests to the API`);
           });
         });
       });
@@ -73,9 +70,9 @@ export default Ember.Controller.extend({
         data: []
       }
     ]
-      this.set('piecharts', true); var genmixArr = args.genmix;
+      this.set('piecharts', true); 
       var that = this;
-      var fuelTypeArr =  args.map(function(ele){
+      args.map(function(ele){
          ele.genmix.map(function(item){
           if (item.fuel === 'other'){
             model[0].data.push(item.gen_MW);

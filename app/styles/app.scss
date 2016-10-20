@@ -17,6 +17,7 @@ html, body {
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  margin-top: 30px;
   color: blue;
 }
 
@@ -57,5 +58,10 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.bigger {
+  font-size: 18px;
+  font-weight: bold;
 }
 
